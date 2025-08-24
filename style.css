@@ -17,3 +17,18 @@ body{
      margin: 30px;
      background: #ccc;
 }
+
+h1{
+    text-align: center;
+}
+
+.input-section{
+    display: flex;
+    gap: 10px;
+
+
+}
+input{
+    flex: 1;
+    padding: 8px;
+}
