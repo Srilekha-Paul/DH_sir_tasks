@@ -1,5 +1,67 @@
-const input= document.getElementById("todoInput");
-const addBTN= document.getElementById("addBTN");
-const list= document.getElementById("todoList");
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+const input = document.getElementById("todoInput");
+const addBtn = document.getElementById("addBtn");
+const list = document.getElementById("todoList");
 const taskCount = document.getElementById("taskCount");
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function renderTodos() {
+  list.innerHTML = "";
+
+  
+  todos.map((todo, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${todo}</span>
+      <div>
+        <button class="edit" onclick="editTodo(${index})">Edit</button>
+        <button onclick="deleteTodo(${index})">Delete</button>
+      </div>
+    `;
+    list.appendChild(li);
+  });
+
+  
+  taskCount.textContent = todos.reduce((count) => count + 1, 0);
+}
+
+function addTodo() {
+  const task = input.value.trim();
+  if (task) {
+   
+    todos.push(task);
+    saveTodos();
+    renderTodos();
+    input.value = "";
+  }
+}
+
+function editTodo(index) {
+  const newTask = prompt("Edit your task:", todos[index]);
+  if (newTask) {
+    
+    todos = [
+      ...todos.slice(0, index),
+      newTask,
+      ...todos.slice(index + 1)
+    ];
+    saveTodos();
+    renderTodos();
+  }
+}
+
+function deleteTodo(index) {
+  
+  todos = todos.filter((_, i) => i !== index);
+  saveTodos();
+  renderTodos();
+}
+
+addBtn.addEventListener("click", addTodo);
+window.addEventListener("load", renderTodos);
+           
 

@@ -80,3 +80,13 @@ li button.edit {
   text-align: center;
   margin-top: 10px;
 }
+
+@media (max-width:480px){
+  .input-section, li {
+  flex-direction:column; 
+  align-items:stretch;}
+  button, input, li button {
+  width:100%; 
+  margin:5px 0 0;}
+}
+
