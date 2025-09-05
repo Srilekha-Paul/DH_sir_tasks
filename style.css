@@ -42,13 +42,13 @@ button {
   padding: 8px 12px;
   cursor: pointer;
   border: none;
-  background: #28a745;
+  background: #27b448;
   color: white;
   border-radius: 5px;
 }
 
 button:hover {
-  background: #218838;
+  background: #27b448;
 }
 
 ul {
@@ -73,7 +73,7 @@ li button {
 }
 
 li button.edit {
-  background: #ffc107;
+  background: #fcbe03;
 }
 
 .stats {
